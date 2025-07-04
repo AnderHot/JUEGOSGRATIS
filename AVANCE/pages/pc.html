@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PC - Juegos</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background: black;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+    }
+
+
+    .carousel-item {
+      height: 80vh;
+      min-height: 300px;
+    }
+
+    .carousel-caption {
+      bottom: 150px;
+      z-index: 2;
+    }
+
+    .carousel-caption h5 {
+      font-size: 45px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 25px;
+    }
+
+    .carousel-caption p {
+      width: 60%;
+      margin: auto;
+      font-size: 18px;
+      line-height: 1.9;
+    }
+
+    .carousel-inner::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+
+    .section-header {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+      position: relative;
+    }
+
+    .section-header p {
+      font-size: 1.1rem;
+      transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .section-header:hover h2 {
+      transform: scale(1.05);
+      color: #00aaff;
+      text-shadow: 0 0 8px rgba(0, 170, 255, 0.7), 0 0 15px rgba(0, 170, 255, 0.5);
+    }
+
+    .section-header:hover p {
+      transform: scale(1.02);
+      color: #f0f0f0;
+    }
+
+
+
+    /* Tarjetas */
+    .card {
+      background-color: #121212;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      margin-bottom: 30px;
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+        box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+        border-color 0.3s ease-in-out;
+      border: 2px solid transparent;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 10px 30px rgba(183, 75, 75, 0.25), 0 5px 15px rgba(0, 0, 0, 0.4);
+      border-color: #b74b4b;
+    }
+
+
+    .card .img-area {
+      max-height: 200px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+
+    .card .img-area img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 6px;
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .card:hover .img-area img {
+      transform: scale(1.1);
+    }
+
+    .card h3 {
+      font-size: 1.7rem;
+      margin-bottom: 15px;
+      transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    .card:hover h3 {
+      color: #00d1ff;
+      transform: scale(1.05);
+    }
+
+    .card p.lead {
+      font-size: 1.25rem;
+      line-height: 1.5;
+      color: #ddd;
+      white-space: pre-line;
+      text-align: left;
+      margin-bottom: 20px;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .card:hover p.lead {
+      color: #fff;
+    }
+
+
+    .card .btn-custom-download {
+      margin-top: auto;
+      padding: 12px 24px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
+
+      background-color: #b74b4b;
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .card .btn-custom-download:hover {
+      background-color: #a34242;
+      color: white;
+      text-decoration: none;
+    }
+
+    .card:hover .btn-custom-download {
+      background-color: #a34242;
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 4px 15px rgba(183, 75, 75, 0.4);
+    }
+
+
+    @media (max-width: 991px) {
+      .carousel-caption {
+        bottom: 100px;
+      }
+
+      .carousel-caption h5 {
+        font-size: 35px;
+      }
+
+      .carousel-caption p {
+        width: 80%;
+        font-size: 16px;
+      }
+
+      .section-header:hover h2 {
+        transform: scale(1.02);
+      }
+
+      .section-header:hover p {
+        transform: scale(1.01);
+      }
+
+      .card:hover {
+        transform: translateY(-7px) scale(1.02);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .carousel-item {
+        height: 60vh;
+      }
+
+      .carousel-caption {
+        bottom: 50px;
+      }
+
+      .carousel-caption h5 {
+        font-size: 28px;
+      }
+
+      .carousel-caption p {
+        width: 90%;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .card {
+        padding: 15px;
+      }
+
+      .section-header:hover h2,
+      .section-header:hover p,
+      .card:hover,
+      .card:hover .img-area img,
+      .card:hover h3 {
+        transform: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        border-color: transparent;
+      }
+
+      .card:hover .btn-custom-download {
+        background-color: #b74b4b;
+        box-shadow: none;
+        transform: none;
+      }
+
+      .card:hover h3 {
+        color: white;
+      }
+
+      .card:hover p.lead {
+        color: #ddd;
+      }
+
+      .card h3 {
+        font-size: 1.5rem;
+      }
+
+      .card p.lead {
+        font-size: 1.1rem;
+      }
+
+      .card .btn-custom-download {
+        padding: 10px 20px;
+        font-size: 1.0rem;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+
+      .section-header p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Carrusel -->
+  <div id="pcCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#pcCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+        aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#pcCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#pcCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner position-relative">
+      <div class="carousel-item active">
+        <img src="img/Minecraft.jpg" class="d-block w-100 h-100" alt="Minecraft" style="object-fit: cover;">
+        <div class="carousel-caption text-white position-absolute">
+          <h5>Minecraft</h5>
+          <p>
+            Un juego de construcción y aventuras que revolucionó la industria desde su lanzamiento en 2011.
+            Explora mundos infinitos, recolecta recursos, construye estructuras y enfréntate a criaturas
+            mientras das rienda suelta a tu creatividad en este universo hecho de bloques.
+          </p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/mariobros.jpg" class="d-block w-100 h-100" alt="Super Mario Bros" style="object-fit: cover;">
+        <div class="carousel-caption text-white position-absolute">
+          <h5>Super Mario Bros</h5>
+          <p>
+            Uno de los juegos más icónicos de Nintendo, lanzado en 1985. Acompaña a Mario en su misión por
+            rescatar a la Princesa Peach del malvado Bowser, saltando obstáculos y derrotando enemigos en el
+            Reino Champiñón.
+          </p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/left4dead2.avif" class="d-block w-100 h-100" alt="Left 4 Dead 2" style="object-fit: cover;">
+        <div class="carousel-caption text-white position-absolute">
+          <h5>Left 4 Dead 2</h5>
+          <p>
+            Un intenso juego de acción cooperativa lanzado por Valve en 2009. Únete a un grupo de
+            sobrevivientes mientras luchan por escapar de hordas de zombis en escenarios postapocalípticos.
+            Usa armas, estrategia y trabajo en equipo para sobrevivir en esta experiencia llena de
+            adrenalina.
+          </p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#pcCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#pcCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+
+  <!-- Contenedor tarjetas -->
+  <section class="portfolio section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-header text-center text-white pb-5 pt-5">
+            <h2>Juegos</h2>
+            <p>Explora nuestra selección de juegos gratuitos para PC. <br> ¡Descarga y disfruta!</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <!-- TARJETA 1-->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/gtav.webp" class="img-fluid" alt="GTA IV">
+              </div>
+              <h3 class="text-center">GTA IV</h3>
+              <p class="lead">
+                Título: Grand Theft Auto IV Enhanced PC-GAME
+                Fecha de Lanzamiento: 04 de Marzo de 2025
+                Fecha de Actualización: 06 de Mayo de 2025
+                Formato: ISO
+                Tamaño ISO: 45.06 Gigas
+                Tamaño Instalado: 94 Gigas Aproximadamente.
+                Idioma Voces: Ingles
+                Idiomas Textos: Español, Ingles, Frances, Alemán y Japones
+                Género: Acción, Aventura, Carreras
+              </p>
+              <a href="https://cpclinks.org/#WVVoU01HTklUVFpNZVRsellqTk9jMkZYTlhKamVUVjJZMjFqZGxBeldUbE5WRVY1VG1jOVBRPT0="
+                target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+        <!-- TARJETA 2 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/AMONG US.webp" class="img-fluid" alt="Among Us">
+              </div>
+              <h3 class="text-center">AMONG US</h3>
+              <p class="lead">
+                Título: Among Us PC-GAME
+                Fecha de Lanzamiento: 16 de Noviembre de 2018
+                Fecha de Actualización: 04 de Abril de 2025
+                Formato: Portable
+                Tamaño: 451.45 Megas
+                Idiomas: Español, Ingles, Portugués, entre otros.
+                Género: Multijugador, Cooperativo en línea, Deducción social, Indie.
+              </p>
+              <a href="https://cpclinks.org/#WVVoU01HTklUVFpNZVRsellqTk9jMkZYTlhKamVUVjJZMjFqZGxBeldUbE9hazEz"
+                target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+        <!-- TARJETA 3 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/PES2019.jpg" class="img-fluid" alt="PES 2019">
+              </div>
+              <h3 class="text-center">PES2018</h3>
+              <p class="lead">
+                Título: PRO EVOLUTION SOCCER 2019 PC-GAME
+                Género: Deportes
+                Fecha de lanzamiento: 29 de Agosto de 2018
+                Fecha de Actualización: 25 de Octubre de 2018
+                Idioma Voces y Textos: Español Latino, Español España e Ingles.
+                Tamaño: 17.6 Gigas
+              </p>
+              <a href="https://cpclinks.org/#WVVoU01HTklUVFpNZVRsellqTk9jMkZYTlhKamVUVjJZMjFqZGxBeldUbE9WRlUxVGxFOVBRPT0="
+                target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 4 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/CallOfDutyModenWarfare.png" class="img-fluid" alt="Call of Duty Modern Warfare II">
+              </div>
+              <h3 class="text-center">Call of Duty Modern Warfare II</h3>
+              <p class="lead">
+                Título: Call of Duty: Modern Warfare 2 PC-GAME
+                Fecha de Lanzamiento: 27 de Octubre de 2022
+                Categorías: Acción
+                Formato: Portable
+                Tamaño: 30.7 Gigas
+                Plataforma: PC
+                Idioma: Ingles
+              </p>
+              <a href="https://cpclinks.org/#WVVoU01HTklUVFpNZVRsellqTk9jMkZYTlhKamVUVjJZMjFqZGxBeldUbE9WR3Q0VG1jOVBRPT0="
+                target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 5 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/Minecraft-descarga.jpg" class="img-fluid" alt="Juego Nuevo 5">
+              </div>
+              <h3 class="text-center">MINECRAFT</h3>
+              <p class="lead">
+                Título: Minecraft
+                Fecha de Lanzamiento: 15 de octubre de 2013
+                Formato: Instalador
+                Tamaño: 1.89 KB
+                Idiomas: Multilenguaje
+                Género: Estrategia
+              </p>
+              <a href="https://tlauncher.org/" target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 6 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/FreeFire.png" class="img-fluid" alt="Juego Nuevo 6">
+              </div>
+              <h3 class="text-center">Free Fire</h3>
+              <p class="lead">
+                Título: Free fire: 8 aniversario
+                Fecha de Lanzamiento: 20 de Junio 2025
+                Formato: PC
+                Tamaño: 3.5 GB
+                Idiomas: Multilenguaje
+                Género: Battle royale
+              </p>
+              <a href="https://es.ldplayer.net/games/garena-free-fire-on-pc.html?gameId=2161&n=44657388" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 7 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/FiveNightsatFreddy1.jpg" class="img-fluid" alt="Juego Nuevo 7">
+              </div>
+              <h3 class="text-center">Five Nights at Freddy’s 1</h3>
+              <p class="lead">
+                Título: Five Nights at Freddy’s 1
+                SO: Windows XP/Vista/7
+                CPU: Pentium 4 o AMD Athlon ≥ 2 GHz
+                RAM: 1 GB
+                GPU: 1 GB VRAM, compatible con DirectX 9
+                Espacio: 250 MB
+              </p>
+              <a href="https://www.mediafire.com/file/mi1d7sklgq5kepz/5NightsatFr3ddys1.exe/file](https://www.mediafire.com/file/mi1d7sklgq5kepz/5NightsatFr3ddys1.exe/file)"
+                target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 8 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/BleachBraveSouls.jpg" class="img-fluid" alt="Juego Nuevo 8">
+              </div>
+              <h3 class="text-center">Bleach: Brave Souls</h3>
+              <p class="lead">
+                Título: Bleach: Brave Souls
+                SO: Windows 7 o superior (64-bit)
+                CPU: Intel Core i3 o AMD equivalente
+                RAM: 4 GB
+                GPU: NVIDIA GTX 650 / AMD R7 250 o superior
+                Espacio: 12 GB
+
+              </p>
+              <a href="https://store.steampowered.com/app/1201240/BLEACH_Brave_Souls/" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 9 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/marvelrivals.jpg" class="img-fluid" alt="Juego Nuevo 9">
+              </div>
+              <h3 class="text-center">Marvel Rivals</h3>
+              <p class="lead">
+                Título: Marvel Rivals
+                SO: Windows 10 de 64 bit (versión 1909 o superior)
+                CPU: Intel Core i5 6600K o AMD Ryzen 5 1600X (mínimo); Intel Core i5 10400 o AMD Ryzen 5 5600X
+                RAM: 16 GB
+                GPU: NVIDIA GeForce GTX 1060 / AMD RX 580 / Intel Arc A380
+              </p>
+              <a href="https://www.marvelrivals.com/" target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 10 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/FiveNightsatFreddy2.jpeg" class="img-fluid" alt="Juego Nuevo 10">
+              </div>
+              <h3 class="text-center">Five Nights at Freddy’s 2</h3>
+              <p class="lead">
+                SO: XP/Vista/7/8
+                CPU: 2 GHz Pentium 4 o AMD Athlon
+                RAM: 1 GB
+                GPU: 1 GB VRAM
+                Espacio: 250 MB
+              </p>
+              <a href="https://www.mediafire.com/file/5cdom4tl0nw47lf/Five" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 11 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/FiveNightsatFreddy3.webp" class="img-fluid" alt="Juego Nuevo 11">
+              </div>
+              <h3 class="text-center">Five Nights at Freddy’s 3</h3>
+              <p class="lead">
+                SO: XP/Vista/7/8
+                CPU: 2 GHz Pentium 4 o AMD Athlon
+                RAM: 1 GB
+                GPU: 1 GB VRAM
+                Espacio: 250 MB
+              </p>
+              <a href="https://mega.nz/file/n1cw1DbI#Px6qEzGoFYnI-IUUpPTbn2kVzNq966Fd_B8kxc2N1RU" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 12 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/GTASanAndreas.jpeg" class="img-fluid" alt="Juego Nuevo 12">
+              </div>
+              <h3 class="text-center">GTA San Andreas</h3>
+              <p class="lead">
+                SO: Win 2000/XP
+                CPU: Pentium III o Athlon ≥ 1 GHz
+                RAM: 256 MB
+                GPU: 64 MB DirectX 8.1
+                Espacio: 3.6 GB
+                DVD-ROM: 8x
+              </p>
+              <a href="https://www.mediafire.com/file/2vudo6z2fk99zx6/Gta/San/_Andreas/%2BSamp/By/_TutosLoquendo.zip"
+                target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 13 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/NarutoShippudenUltimateNinjaStorm4.jpg" class="img-fluid" alt="Juego Nuevo 13">
+              </div>
+              <h3 class="text-center">Naruto Shippuden: Ultimate Ninja Storm 4</h3>
+              <p class="lead">
+                SO: Windows 7/8/10 (64-bit)
+                CPU: Intel Core i5 4590 / AMD FX 6300
+                RAM: 8 GB
+                GPU: NVIDIA GTX 760 / AMD Radeon HD 7950
+                Espacio: 80 GB
+              </p>
+              <a href="https://store.steampowered.com/app/349040/NARUTO_SHIPPUDEN_Ultimate_Ninja_STORM_4/"
+                target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 14 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/DragonBallZSparkingZero.jpg" class="img-fluid" alt="Juego Nuevo 14">
+              </div>
+              <h3 class="text-center">Dragon Ball Z: Sparking! Zero</h3>
+              <p class="lead">
+                Windows 10/11 (64-bit)
+                CPU: Intel Core i5 8400® / Ryzen 5 2600
+                RAM: 8 GB
+                GPU: GTX 970 / Radeon RX 570 (4 GB)
+              </p>
+              <a href="https://www.bandainamcoent.com/" target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 15 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/SuperSmashFlash2.webp" class="img-fluid" alt="Juego Nuevo 15">
+              </div>
+              <h3 class="text-center">Super Smash Flash 2</h3>
+              <p class="lead">
+                Navegador con Flash o su equivalente
+                CPU: 1.5 GHz
+                RAM: 1 GB
+              </p>
+              <a href="https://www.mcleodgaming.com/2017/07/ssf2-beta-at-super-smash-con-2017" target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+         <!-- TARJETA 16 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/SCUM.png" class="img-fluid" alt="Juego Nuevo 16">
+              </div>
+              <h3 class="text-center">SCUM PC-GAME</h3>
+              <p class="lead">
+                Título: SCUM PC-GAME
+                Otro Titulo: SCUM Supermax Open World Survival
+                Género: Acción, Aventura, Indie, Multijugador masivo.
+                Fecha de Lanzamiento: 17 de Junio de 2025
+                Fecha de Actualización: 03 de Julio de 2025
+                Idioma Voces: Ingles
+                Idioma Textos: Español, Ingles, Alemán y Ruso.
+                Tamaño: 34.2 Gigas | 20.4 Gigas
+              </p>
+              <a href="https://cpclinks.org/#WVVoU01HTklUVFpNZVRsellqTk9jMkZYTlhKamVUVjJZMjFqZGxBeldUbE9WRmw0"
+                target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 17 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/CommandyConquer3.png" class="img-fluid" alt="Juego Nuevo 17">
+              </div>
+              <h3 class="text-center">Command y Conquer 3 Tiberium Wars Complete Collection</h3>
+              <p class="lead">
+                Título: Command y Conquer 3 Tiberium Wars Complete Collection PC Full Español
+                Plataforma: PC
+                Idioma Voces y Textos: Español e Ingles.
+                Género: Estrategia
+                Formato: Instalador
+                Tamaño: 11.08 Gigas
+                Fecha de lanzamiento: 28 de Marzo de 2007
+              </p>
+              <a href="https://cpclinks.org/#WVVoU01HTklUVFpNZVRsellqTk9jMkZYTlhKamVUVjJZMjFqZGxBeldUbE9ha2swVDBFOVBRPT0="
+                target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 18 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/Incursion Red River.png" class="img-fluid" alt="Juego Nuevo 18">
+              </div>
+              <h3 class="text-center">Incursion Red River</h3>
+              <p class="lead">
+                Título: Incursion Red River PC-GAME
+                Fecha de Lanzamiento: 10 de Abril de 2024
+                Fecha de Actualización: 26 de Junio de 2025
+                Formato: Portable
+                Tamaño Comprimido: 23 Gigas
+                Tamaño Descomprimido: 62.3 Gigas
+                Idioma Voces y Textos: Ingles
+                Género: Acción, Acceso anticipado
+              </p>
+              <a href="https://cpclinks.org/#WVVoU01HTklUVFpNZVRsellqTk9jMkZYTlhKamVUVjJZMjFqZGxBeldUbE5WR2Q2VGxFOVBRPT0="
+                target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 19 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/Imperator Rome.png" class="img-fluid" alt="Juego Nuevo 19">
+              </div>
+              <h3 class="text-center">Imperator Rome</h3>
+              <p class="lead">
+                Título: Imperator Rome PC Full Español
+                Fecha de Lanzamiento: 25 de Abril de 2019
+                Fecha de Actualización: 24 de Abril de 2025
+                Formato: ISO
+                Tamaño: 1.27 Gigas
+                Idioma de Textos: Español, Inglés, Francés, Alemán, Ruso, Chino simplificado
+                Género: Simuladores, Estrategia
+              </p>
+              <a href="https://cpclinks.org/#WVVoU01HTklUVFpNZVRsellqTk9jMkZYTlhKamVUVjJZMjFqZGxBeldUbE5WRlY2VG5jOVBRPT0="
+                target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 20 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/Choo-Choo Charles.png" class="img-fluid" alt="Juego Nuevo 20">
+              </div>
+              <h3 class="text-center">Choo-Choo Charles</h3>
+              <p class="lead">
+                Título: Choo-Choo Charles PC-GAME
+                Fecha de Lanzamiento: 09 de Diciembre de 2022
+                Fecha de Actualización: 18 de Enero de 2024
+                Formato: Portable
+                Tamaño: 1.86 Gigas
+                Idioma Voces: Ingles
+                Idioma Textos: Español, Inglés, Francés, Alemán, Portugués de Brasil, entre otros.
+                Género: Acción, Aventura, Indie
+              </p>
+              <a href="https://cpclinks.org/#WVVoU01HTklUVFpNZVRsellqTk9jMkZYTlhKamVUVjJZMjFqZGxBeldUbE9WRlV6VGtFOVBRPT0="
+                target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 21 (Adicional) -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/Resident Evil 4 Remake.png" class="img-fluid" alt="Juego Nuevo 21">
+              </div>
+              <h3 class="text-center">Resident Evil 4 Remake</h3>
+              <p class="lead">
+                Título: Resident Evil 4 Remake PC-GAME
+                Fecha de Lanzamiento: 23 de Marzo de 2023
+                Fecha de Actualización: 24 de Abril de 2023
+                Idioma Voces y Textos: Español España, Ingles, Frances, Portugués de Brasil, entre otros.
+                Género: Acción, Aventura
+                Tamaño: 51 Gigas
+                Formato: ISO
+              </p>
+              <a href="https://cpclinks.org/#WVVoU01HTklUVFpNZVRsellqTk9jMkZYTlhKamVUVjJZMjFqZGxBeldUbE5lbFV3VGxFOVBRPT0=" target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

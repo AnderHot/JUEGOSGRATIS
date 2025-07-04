@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Móvil - Juegos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: black;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+    }
+
+    .carousel-item {
+      height: 80vh;
+      min-height: 300px;
+    }
+
+    .carousel-caption {
+      bottom: 150px;
+      z-index: 2;
+    }
+
+    .carousel-caption h5 {
+      font-size: 45px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 25px;
+    }
+
+    .carousel-caption p {
+      width: 60%;
+      margin: auto;
+      font-size: 18px;
+      line-height: 1.9;
+    }
+
+    .carousel-inner::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .section-header {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+      position: relative;
+    }
+
+    .section-header p {
+      font-size: 1.1rem;
+      transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .section-header:hover h2 {
+      transform: scale(1.05);
+      color: #00aaff;
+      text-shadow: 0 0 8px rgba(0, 170, 255, 0.7), 0 0 15px rgba(0, 170, 255, 0.5);
+    }
+
+    .section-header:hover p {
+      transform: scale(1.02);
+      color: #f0f0f0;
+    }
+
+    .card {
+      background-color: #121212;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      margin-bottom: 30px;
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+        box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+        border-color 0.3s ease-in-out;
+      border: 2px solid transparent;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 10px 30px rgba(183, 75, 75, 0.25), 0 5px 15px rgba(0, 0, 0, 0.4);
+      border-color: #b74b4b;
+    }
+
+    .card .img-area {
+      max-height: 200px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+
+    .card .img-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .card:hover .img-area img {
+      transform: scale(1.1);
+    }
+
+    .card h3 {
+      font-size: 1.7rem;
+      margin-bottom: 15px;
+      transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    .card:hover h3 {
+      color: #00d1ff;
+      transform: scale(1.05);
+    }
+
+    .card p.lead {
+      font-size: 1.25rem;
+      line-height: 1.5;
+      color: #ddd;
+      white-space: pre-line;
+      text-align: left;
+      margin-bottom: 20px;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .card:hover p.lead {
+      color: #fff;
+    }
+
+    .card .btn-custom-download {
+      margin-top: auto;
+      padding: 12px 24px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
+
+      background-color: #b74b4b;
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .card .btn-custom-download:hover {
+      background-color: #a34242;
+      color: white;
+      text-decoration: none;
+    }
+
+    .card:hover .btn-custom-download {
+      background-color: #a34242;
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 4px 15px rgba(183, 75, 75, 0.4);
+    }
+
+    @media (max-width: 991px) {
+      .carousel-caption {
+        bottom: 100px;
+      }
+
+      .carousel-caption h5 {
+        font-size: 35px;
+      }
+
+      .carousel-caption p {
+        width: 80%;
+        font-size: 16px;
+      }
+
+      .section-header:hover h2 {
+        transform: scale(1.02);
+      }
+
+      .section-header:hover p {
+        transform: scale(1.01);
+      }
+
+      .card:hover {
+        transform: translateY(-7px) scale(1.02);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .carousel-item {
+        height: 60vh;
+      }
+
+      .carousel-caption {
+        bottom: 50px;
+      }
+
+      .carousel-caption h5 {
+        font-size: 28px;
+      }
+
+      .carousel-caption p {
+        width: 90%;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .card {
+        padding: 15px;
+      }
+
+      .section-header:hover h2,
+      .section-header:hover p,
+      .card:hover,
+      .card:hover .img-area img,
+      .card:hover h3 {
+        transform: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        border-color: transparent;
+      }
+
+      .card:hover .btn-custom-download {
+        background-color: #b74b4b;
+        box-shadow: none;
+        transform: none;
+      }
+
+      .card:hover h3 {
+        color: white;
+      }
+
+      .card:hover p.lead {
+        color: #ddd;
+      }
+
+      .card h3 {
+        font-size: 1.5rem;
+      }
+
+      .card p.lead {
+        font-size: 1.1rem;
+      }
+
+      .card .btn-custom-download {
+        padding: 10px 20px;
+        font-size: 1.0rem;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+
+      .section-header p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="movilCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500" data-bs-pause="hover">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#movilCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+        aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#movilCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#movilCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner position-relative">
+      <div class="carousel-item active">
+        <img src="img/MobileLegends.jpg" class="d-block w-100 h-100" alt="Juego Móvil Destacado 1"
+          style="object-fit: cover;">
+        <div class="carousel-caption text-white position-absolute">
+          <h5>Mobile Legends: Bang Bang</h5>
+          <p>
+            Un juego de estrategia y acción en línea que marcó un antes y un después en los eSports móviles desde su
+            lanzamiento.
+            Forma parte de intensas batallas 5 vs 5, elige entre héroes únicos, domina el campo de batalla y demuestra
+            tu habilidad en combates llenos de emoción en tiempo real.
+            Con controles intuitivos y partidas rápidas, Mobile Legends: Bang Bang lleva la experiencia MOBA
+            directamente a la palma de tu mano.
+          </p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/PUGBMOBILE.jpg" class="d-block w-100 h-100" alt="Juego Móvil Destacado 2"
+          style="object-fit: cover;">
+        <div class="carousel-caption text-white position-absolute">
+          <h5>PUBG Mobile</h5>
+          <p>
+            Un intenso juego de disparos tipo battle royale que revolucionó el gaming móvil a nivel mundial.
+            Lánzate en paracaídas a una isla remota, busca armas, enfréntate a otros jugadores y lucha por ser el último
+            en pie.
+            Con mapas realistas, múltiples modos de juego y acción táctica en tiempo real, PUBG Mobile ofrece una
+            experiencia de supervivencia sin igual, directamente desde tu teléfono.
+          </p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/Genshin.jpeg" class="d-block w-100 h-100" alt="Juego Móvil Destacado 3"
+          style="object-fit: cover;">
+        <div class="carousel-caption text-white position-absolute">
+          <h5>Genshin Impact</h5>
+          <p>
+            Una épica aventura de mundo abierto que cautivó a millones desde su lanzamiento.
+            Explora el vasto reino de Teyvat, domina los elementos, resuelve misterios y enfréntate a poderosos enemigos
+            mientras reúnes un equipo de personajes únicos.
+            Con gráficos impresionantes, una historia envolvente y combate dinámico, Genshin Impact redefine la
+            experiencia de rol y exploración en dispositivos móviles, PC y consolas.
+          </p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#movilCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#movilCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+
+  <section class="portfolio section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-header text-center text-white pb-5 pt-5">
+            <h2>Juegos para Móvil</h2>
+            <p>Descubre los mejores juegos gratuitos para tu dispositivo móvil. <br> ¡Descarga y juega donde quieras!
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <!-- TARJETA 1: Móvil -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/ClashRoyale.jpg" class="img-fluid" alt="Clash Royale">
+              </div>
+              <h3 class="text-center">Clash Royale</h3>
+              <p class="lead">
+                Título: Clash Royale
+                Desarrollador: Supercell
+                Plataformas: Android, iOS
+                Género: Estrategia en tiempo real, Tower Defense
+                Descarga: Gratis
+              </p>
+              <a href="https://play.google.com/store/apps/details?id=com.supercell.clashroyale&hl=es_PE" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+        <!-- TARJETA 2: Móvil -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/BrawlStars.jpeg" class="img-fluid" alt="Brawl Stars">
+              </div>
+              <h3 class="text-center">Brawl Stars</h3>
+              <p class="lead">
+                Título: Brawl Stars
+                Desarrollador: Supercell
+                Plataformas: Android, iOS
+                Género: MOBA, Shooter
+                Descarga: Gratis
+              </p>
+              <a href="https://play.google.com/store/apps/details?id=com.supercell.brawlstars&hl=es_PE" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+        <!-- TARJETA 3: Móvil -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/CallofDuty.jpg" class="img-fluid" alt="Call of Duty: Mobile">
+              </div>
+              <h3 class="text-center">Call of Duty: Mobile</h3>
+              <p class="lead">
+                Título: Call of Duty: Mobile
+                Desarrollador: TiMi Studios
+                Plataformas: Android, iOS
+                Género: First-Person Shooter
+                Descarga: Gratis
+              </p>
+              <a href="https://www.callofduty.com/es/mobile" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 4: Móvil -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/FlowFree.png" class="img-fluid" alt="Juego Móvil 4">
+              </div>
+              <h3 class="text-center">Flow Free</h3>
+              <p class="lead">
+                Plataformas: Android, iOS
+                Género: Puzzle
+                Tamaño: 50MB
+                Descarga: Gratis
+                Requisitos: Android 5.0+ / iOS 11.0+
+              </p>
+              <a href="https://play.google.com/store/apps/details?id=com.bigduckgames.flow&hl=es_PE" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 5: Móvil -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/Roblox.jpg" class="img-fluid" alt="Juego Móvil 5">
+              </div>
+              <h3 class="text-center">Roblox</h3>
+              <p class="lead">
+                Plataformas: Android, iOS
+                Género: Sandbox / Multijugador
+                Tamaño: 100 MB (varía por juego)
+                Descarga: Gratis
+              </p>
+              <a href="https://www.roblox.com/es/download" target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 6 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/among us.WEBP" class="img-fluid" alt="Juego Móvil 6">
+              </div>
+              <h3 class="text-center">Among Us</h3>
+              <p class="lead">
+                Plataformas: Android, iOS
+                Género: Social / Misterio / Multijugador
+                Tamaño: 150 MB
+                Descarga: Gratis
+              </p>
+              <a href="https://play.google.com/store/apps/details?id=com.innersloth.spacemafia&hl=es_PE" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 7 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/DragonBallLegends.webp" class="img-fluid" alt="Juego Móvil 7">
+              </div>
+              <h3 class="text-center">Dragon Ball Legends</h3>
+              <p class="lead">
+                Plataformas: Android, iOS
+                Género: Lucha / Acción
+                Tamaño: 1.5 GB
+                Descarga: Gratis
+              </p>
+              <a href="https://dble.bn-ent.net/es/" target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 8 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/Fornite.jpg" class="img-fluid" alt="Juego Móvil 8">
+              </div>
+              <h3 class="text-center">Fortnite</h3>
+              <p class="lead">
+                Plataformas: Android, iOS
+                Género: Battle Royale / Construcción
+                Tamaño: 10 GB
+                Descarga: Desde epicgames.com o GeForce NOW
+              </p>
+              <a href="https://www.fortnite.com/mobile/android?lang=es-ES" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 9 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/CriticalOps.jpeg" class="img-fluid" alt="Juego Móvil 9">
+              </div>
+              <h3 class="text-center">Critical Ops</h3>
+              <p class="lead">
+                Plataformas: Android, iOS
+                Género: Shooter en primera persona (FPS)
+                Tamaño: 600 MB
+                Descarga: Gratis
+              </p>
+              <a href="https://play.google.com/store/apps/details?id=com.criticalforceentertainment.criticalops&hl=es_419"
+                target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 10 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/NARUTOXBORUTO.jpg" class="img-fluid" alt="Juego Móvil 10">
+              </div>
+              <h3 class="text-center">NARUTO X BORUTO Ninja Voltage</h3>
+              <p class="lead">
+                Plataformas: Android, iOS
+                Género: Acción / Estrategia / Anime
+                Tamaño: 900 MB
+                Descarga: Gratis
+              </p>
+              <a href="https://naruto-x-boruto-ninja-voltage.uptodown.com/android" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 11 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/8BallPool.png" class="img-fluid" alt="Juego Móvil 11">
+              </div>
+              <h3 class="text-center">8 Ball Pool</h3>
+              <p class="lead">
+                Plataformas: Android, iOS
+                Género: Deportes / Billar
+                Tamaño: 100 MB
+                Descarga: Gratis
+              </p>
+              <a href="https://8-ball-pool.uptodown.com/android/descargar" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 12 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/MobileLegends.jpg" class="img-fluid" alt="Juego Móvil 12">
+              </div>
+              <h3 class="text-center">Mobile Legends: Bang Bang</h3>
+              <p class="lead">
+                Plataformas: Android, iOS
+                Género: MOBA
+                Tamaño: 200 MB + contenido extra
+                Descarga: Gratis
+              </p>
+              <a href="https://www.mobilelegends.com/" target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 13 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/ClashofClans.jpg" class="img-fluid" alt="Juego Móvil 13">
+              </div>
+              <h3 class="text-center">Clash of Clans</h3>
+              <p class="lead">
+                Plataformas: Android, iOS
+                Género: Estrategia / Construcción de aldeas
+                Tamaño: 300 MB
+                Descarga: Gratis
+              </p>
+              <a href="https://supercell.com/en/games/clashofclans/" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 14 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/PUGBMOBILE.jpg" class="img-fluid" alt="Juego Móvil 14">
+              </div>
+              <h3 class="text-center">PUBG Mobile</h3>
+              <p class="lead">
+                Plataformas: Android, iOS
+                Género: Battle Royale / Shooter
+                Tamaño: 2.4 GB
+                Descarga: Gratis
+              </p>
+              <a href="https://www.pubgmobile.com/es/home.shtml" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 15 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/Genshin.jpeg" class="img-fluid" alt="Juego Móvil 15">
+              </div>
+              <h3 class="text-center">Genshin Impact</h3>
+              <p class="lead">
+                Plataformas: Android, iOS
+                Género: Mundo Abierto / RPG / Aventura
+                Tamaño: 4.6 GB
+                Descarga: Gratis
+              </p>
+              <a href="https://genshin.hoyoverse.com/es/" target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 16 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/Plantasvszombie.webp" class="img-fluid" alt="Juego Móvil 16">
+              </div>
+              <h3 class="text-center">Plants vs. Zombies 2</h3>
+              <p class="lead">
+                Plataformas: Android, iOS
+                Género: Estrategia / Tower Defense
+                Tamaño: 500 MB
+                Descarga: Gratis
+              </p>
+              <a href="https://www.ea.com/es-es/games/plants-vs-zombies/plants-vs-zombies-2" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 17 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/PokemonUnite.jpg" class="img-fluid" alt="Juego Móvil 17">
+              </div>
+              <h3 class="text-center">Pokemon Unite</h3>
+              <p class="lead">
+                Plataformas: Android, iOS
+                Género: MOBA / Estrategia en tiempo real
+                Tamaño: 1 GB
+                Descarga: Gratis
+              </p>
+              <a href="https://unite.pokemon.com/es-es/" target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 18 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/minecraft.jpg" class="img-fluid" alt="Juego Móvil 18">
+              </div>
+              <h3 class="text-center">Minecraft</h3>
+              <p class="lead">
+                Plataformas: Android
+                Género: Aventura / Supervivencia / Sandbox
+                Tamaño: 100 MB
+                Descarga: Gratis
+              </p>
+              <a href="https://minecraft-trial.softonic.com/android/descargar" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 19 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/GTASanAndreas.webp" class="img-fluid" alt="Juego Móvil 19">
+              </div>
+              <h3 class="text-center">GTA San Andreas</h3>
+              <p class="lead">
+                Género: Acción / Aventura / Mundo Abierto
+                Tamaño: 1.78GB
+                Descarga: Google Play / APK
+                Actualización: 30 de mayo de 2025
+                Versión: 2.11.277
+              </p>
+              <a href="https://espacioapk.com/gta-sanandreas-apk/" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 20 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/ModernCombat5.jpg" class="img-fluid" alt="Juego Móvil 20">
+              </div>
+              <h3 class="text-center">Modern Combat 5</h3>
+              <p class="lead">
+                Plataformas: Android, iOS
+                Género: Shooter en primera persona (FPS)
+                Tamaño: 1.5 GB
+                Descarga: Gratis
+              </p>
+              <a href="https://www.gameloft.com/game/modern-combat-5" target="_blank"
+                class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 21 -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-light bg-dark pb-2 h-100">
+            <div class="card-body text-white d-flex flex-column">
+              <div class="img-area mb-4">
+                <img src="img/geometrydash.png" class="img-fluid" alt="Juego Móvil 21">
+              </div>
+              <h3 class="text-center">Geometry Dash</h3>
+              <p class="lead">
+                Plataformas: Android, iOS
+                Género: Plataformas rítmico / Arcade
+                Tamaño: 158 MB Android / iOS
+                Descarga: Gratis
+              </p>
+              <a href="https://thegeometrydash.net/es/" target="_blank" class="btn btn-custom-download">Descargar</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

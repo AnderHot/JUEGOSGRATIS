@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Game Drop</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">
+            <img src="img/LOGO-GAMEDROP.png" alt="Logo" />
+            Game Drop
+        </a>
+
+        <div id="menu-icon" class="fas fa-bars"></div>
+        <nav>
+            <a href="#" id="inicio" class="active">Inicio</a>
+            <a href="#" data-page="pc.html">PC</a>
+            <a href="#" data-page="movil.html">Móvil</a>
+            <a href="#" data-page="contacto.html">Contacto</a>
+            <a href="#" id="logoutButton" style="display: none;">Cerrar Sesión</a>
+        </nav>
+    </header>
+
+    <main id="contenido">
+        <section class="inicio">
+            <img src="img/perfil2.jpg" alt="Perfil" class="inicio-img" />
+            <div class="inicio-content">
+                <h1>Bienvenidos a <span>Game Drop</span></h1>
+                <h3 class="typing-text">Una página donde encontrarás juegos gratis</h3>
+                <p>
+                    Somos una plataforma web confiable donde podrás descargar variedad de juegos que estuviste buscando
+                    durante mucho tiempo. Encontrarás juegos que viste en otras páginas pero con precio, en cambio en
+                    nuestra plataforma web esos juegos los encontrarás gratis y así podrás disfrutarlos.
+                </p>
+                <div class="social-icons">
+                    <a href="https://pe.linkedin.com/" target="_blank" rel="noopener noreferrer"><i
+                            class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/" target="_blank" rel="noopener noreferrer"><i
+                            class="fa-brands fa-github"></i></a>
+                    <a href="https://x.com/?lang=es" target="_blank" rel="noopener noreferrer"><i
+                            class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><i
+                            class="fa-brands fa-instagram"></i></a>
+                </div>
+
+                <a href="#" class="btn" id="authButtonState">Registrarse / Iniciar Sesión</a>
+            </div>
+        </section>
+    </main>
+
+
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">x</span>
+            <div id="registrationFormContainer">
+                <h2>Crear Cuenta</h2>
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="regUsuario">Usuario:</label>
+                        <input type="text" id="regUsuario" name="regUsuario" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email:</label>
+                        <input type="email" id="regEmail" name="regEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Crear Contraseña:</label>
+                        <input type="password" id="regPassword" name="regPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regConfirmPassword">Confirmar Contraseña:</label>
+                        <input type="password" id="regConfirmPassword" name="regConfirmPassword" required>
+                    </div>
+                    <div class="form-group terms">
+                        <input type="checkbox" id="regTerms" name="regTerms" required>
+                        <label for="regTerms" class="terms-label">Acepto los <a href="#" target="_blank">términos y
+                                condiciones</a></label>
+                    </div>
+                    <button type="submit" class="btn-modal">Registrarse</button>
+                </form>
+                <p class="toggle-form">¿Ya tienes una cuenta? <a href="#" id="showLogin">Inicia Sesión</a></p>
+            </div>
+
+            <!-- Formulario de Inicio de Sesión -->
+            <div id="loginFormContainer" style="display: none;">
+                <h2>Iniciar Sesión</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email:</label>
+                        <input type="email" id="loginEmail" name="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Contraseña:</label>
+                        <input type="password" id="loginPassword" name="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn-modal">Iniciar Sesión</button>
+                </form>
+                <p class="toggle-form">¿No tienes una cuenta? <a href="#" id="showRegistration">Regístrate</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensaje de Éxito -->
+    <div id="successMessage" class="success-message">
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+    <!-- CÓDIGO A AÑADIR -->
+    <a href="https://wa.me/51907390346?text=Hola,%20quisiera%20más%20información." class="whatsapp-float"
+        target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+</body>
+
+</html>
